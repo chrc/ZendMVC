@@ -11,10 +11,16 @@ class FormationController extends Zend_Controller_Action {
     protected $mapper = null;
 
     public function init() {
+        $this->view->headTitle('Catalogue des formations');
+        
+        
         $this->mapper = new Application_Model_Mapper_Formation();
     }
 
     public function indexAction() {
+        $this->view->headTitle(' - Liste des formations');
+        //$this->view->headLink()->appendStylesheet('/css/style.css');
+        
         $this->view->Formations = $this->mapper->getAll();
         
         $flashMessenger = $this->getHelper('FlashMessenger');
@@ -51,7 +57,11 @@ class FormationController extends Zend_Controller_Action {
     }
 
     public function supprimerAction() {
-        // action body
+        if ($this->_request->isPost()) {
+            
+        } else {
+            $this->detailsAction();
+        }
     }
 
     public function detailsAction() {
