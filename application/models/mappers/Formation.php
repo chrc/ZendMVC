@@ -10,30 +10,8 @@
  *
  * @author Administrateur
  */
-class Application_Model_Mapper_Formation {
-    
-    /* @var Application_Model_DbTable_Formation */
-    protected $dbTable;
-    
-    function __construct() {
-        $this->dbTable = new Application_Model_DbTable_Formation();
-    }
-
-    public function getAll() {
-        $formations = array();
-        $rowSet = $this->dbTable->fetchAll();
-        foreach ($rowSet as $row) {
-            //Zend_Debug::dump($row);
-            $formation = new Application_Model_Formation();
-            $formation->setId($row['id'])
-                      ->setNom($row['nom'])
-                      ->setPrix($row['prix']);
-            $formations[] = $formation;
-        }
-        
-        return $formations;
-    }
-    
+class Application_Model_Mapper_Formation extends Orsys_Model_Mapper_Abstract {
+   
     /**
      * 
      * @param int $id
