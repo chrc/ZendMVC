@@ -1,0 +1,35 @@
+<?php // http://framework.zend.com/manual/1.12/fr/zend.view.helpers.html ?>
+
+<h2>Liste des formations :</h2>
+
+<?php if (isset($this->message)) : ?>
+<p><?php echo $this->message; ?></p>
+<?php endif; ?>
+
+<p>
+    <a href="<?php echo $this->url(array('action' => 'ajouter'), 'default'); ?>">
+        Ajouter une formation
+    </a>
+</p>
+
+<table style="border: 1px solid black;">
+    <thead>
+        <th>Nom</th>
+        <th>Prix</th>
+    </thead>
+
+<?php foreach ($this->Formations as $formation) : ?>
+    <?php /* @var $formation Application_Model_Formation */ ?>
+    <tr>
+        <td><?php echo $formation->getNom(); ?></td>
+        <td><?php echo $formation->getPrix(); ?></td>
+        <td><a href="<?php echo $this->url(array('action' => 'details', 'id' => $formation->getId()), 'default'); ?>">Détails</a></td>
+        <td><a href="<?php echo $this->url(array('action' => 'modifier', 'id' => $formation->getId()), 'default'); ?>">Modifier</a></td>
+        <td><a href="<?php echo $this->url(array('action' => 'supprimer', 'id' => $formation->getId()), 'default'); ?>">Supprimer</a></td>
+    </tr>
+<?php endforeach; ?>
+</table>
+
+
+
+

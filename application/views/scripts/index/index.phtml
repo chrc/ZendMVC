@@ -1,0 +1,17 @@
+<p>Heure : <?php echo $this->heure; ?></p>
+
+<div>
+    Une liste aléatoire :
+    <ul>
+        <?php foreach ($this->nbAleas as $alea) : ?>
+        <li>
+            <?php echo $alea; ?>
+            <?php if ($alea % 2 == 1) : ?>
+            (impair)
+            <?php else : ?>
+            (pair)
+            <?php endif; ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
